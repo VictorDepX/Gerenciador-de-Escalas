@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerar Escala</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerar Escala</h1>
+        <form method="post">
+            <label for="mes_ano">Selecione o mês:</label>
+            <input type="month" name="mes_ano" id="mes_ano" required>
+            <button type="submit">Gerar</button>
+        </form>
+        <a href="{{ url_for('index') }}">Voltar</a>
+    </div>
+</body>
+</html>

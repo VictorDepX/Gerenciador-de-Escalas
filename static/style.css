@@ -1,0 +1,122 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #007bff;
+    --sunday-color: #ffdddd;
+    --weekday-color: #e0f7fa;
+    --holiday-color: #ffeaa7;
+    --card-bg: #f2f2f2;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --primary-color: #66aaff;
+    --sunday-color: #5e2c2c;
+    --weekday-color: #2d3a3a;
+    --holiday-color: #4b3c2d;
+    --card-bg: #1e1e1e;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+form, .menu {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input, select, button {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+a, button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover, button:hover {
+    opacity: 0.9;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--weekday-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    transition: background 0.3s;
+    position: relative;
+}
+
+.day.sunday {
+    background-color: var(--sunday-color);
+}
+
+.day.holiday {
+    background-color: var(--holiday-color);
+}
+
+.dia {
+    font-weight: bold;
+}
+
+.nome {
+    font-size: 0.85rem;
+    margin-top: 5px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.botoes {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}

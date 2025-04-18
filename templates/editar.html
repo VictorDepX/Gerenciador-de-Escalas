@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Escala</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Escala</h1>
+        <form method="post">
+            <input type="month" name="mes_ano" id="mes_ano" required>
+            <input type="hidden" name="mes" id="inputMes">
+            <input type="hidden" name="ano" id="inputAno">
+
+            <label for="dia">Dia do mês:</label>
+            <input type="number" name="dia" id="dia" min="1" max="31" required>
+
+            <label for="funcionario">Funcionário:</label>
+            <select name="funcionario" required>
+                <option disabled selected>Selecione</option>
+                <option>Luiz Bispo</option>
+                <option>Luiz</option>
+                <option>Samuel</option>
+                <option>Nayara</option>
+                <option>Marina</option>
+            </select>
+
+            <button type="submit">Salvar Alteração</button>
+        </form>
+        <a href="{{ url_for('index') }}">Voltar</a>
+    </div>
+</body>
+</html>

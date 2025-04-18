@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Pagamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Relatório de Pagamento - {{ mes }}/{{ ano }}</h1>
+        <table>
+            <tr>
+                <th>Funcionário</th>
+                <th>Dias Trabalhados</th>
+                <th>Total de Horas</th>
+                <th>Salário</th>
+            </tr>
+            <tbody>
+                {% for item in resultados %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.dias_trabalhados }}</td>
+                    <td>{{ item.horas }}</td>
+                    <td>R$ {{ '%.2f' | format(item.salario) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index', ano=ano, mes=mes) }}">Voltar</a>
+    </div>
+</body>
+
+</html>

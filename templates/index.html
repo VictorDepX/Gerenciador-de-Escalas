@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Escala de Funcionários</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            {% if escala %}
+            Escala de Funcionários
+            {% else %}
+            Nenhuma Escala Selecionada
+            {% endif %}
+        </h1>
+
+        <div class="controls">
+            <a href="{{ url_for('gerar') }}">Gerar Nova Escala</a>
+            {% if escala and escala.get('ano') and escala.get('mes') %} 
+                <a href="{{ url_for('editar', ano=escala['ano'], mes=escala['mes']) }}">Editar Escala</a>
+                <a href="{{ url_for('relatorio', ano=escala['ano']|int, mes=escala['mes']|int) }}">Ver Relatório</a>
+                <a href="{{ url_for('exportar', ano=escala['ano'], mes=escala['mes']) }}">Exportar PDF</a>
+            {% else %}
+                <p>Nenhuma escala disponível para edição.</p>
+            {% endif %}
+            <button id="toggleTheme">Alternar Tema</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="calendario">
+            {% if escala and 'calendario' in escala %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for semana in escala['calendario'] %}
+                    <tr>
+                        {% for dia in semana %}
+                        {% if dia %}
+                        <td class="{{ dia.get('tipo', '') }}"
+                            title="Funcionários: {{ dia.get('funcionarios', ['-']) | join(', ') }}">
+                            <strong>{{ dia.get('dia', '') }}</strong><br>
+                            {{ dia.get('funcionarios', ['-']) | join(', ') }}
+                        </td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p style="padding: 1rem;">Nenhuma escala disponível para este mês.</p>
+            {% endif %}
+        </section>
+
+        <aside>
+            <h2>Escalas Disponíveis</h2>
+            <ul>
+                {% for e in escalas %}
+                <li>
+                    <a href="{{ url_for('index', ano=e['ano'], mes=e['mes']) }}">
+                        {{ e['mes'] }}/{{ e['ano'] }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Sistema de Gerenciamento de Escalas</p>
+    </footer>
+</body>
+
+</html>

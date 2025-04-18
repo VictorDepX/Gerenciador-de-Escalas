@@ -1,0 +1,277 @@
+{
+    "ano": 2025,
+    "mes": 8,
+    "calendario": [
+        [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+                "dia": 1,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Samuel",
+                    "Nayara"
+                ]
+            },
+            {
+                "dia": 2,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Marina"
+                ]
+            }
+        ],
+        [
+            {
+                "dia": 3,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Luiz"
+                ]
+            },
+            {
+                "dia": 4,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Luiz"
+                ]
+            },
+            {
+                "dia": 5,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Samuel",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 6,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Nayara",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 7,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Marina",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 8,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Samuel",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 9,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Nayara",
+                    "Luiz"
+                ]
+            }
+        ],
+        [
+            {
+                "dia": 10,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Nayara",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 11,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Luiz",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 12,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Nayara",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 13,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Samuel",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 14,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Marina",
+                    "Luiz Bispo"
+                ]
+            },
+            {
+                "dia": 15,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Marina",
+                    "Luiz Bispo"
+                ]
+            },
+            {
+                "dia": 16,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Luiz"
+                ]
+            }
+        ],
+        [
+            {
+                "dia": 17,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 18,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Marina",
+                    "Nayara"
+                ]
+            },
+            {
+                "dia": 19,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Nayara",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 20,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Marina",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 21,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Samuel",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 22,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Marina",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 23,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Samuel"
+                ]
+            }
+        ],
+        [
+            {
+                "dia": 24,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Marina",
+                    "Luiz Bispo"
+                ]
+            },
+            {
+                "dia": 25,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Nayara",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 26,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Luiz",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 27,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Luiz",
+                    "Luiz Bispo"
+                ]
+            },
+            {
+                "dia": 28,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Samuel"
+                ]
+            },
+            {
+                "dia": 29,
+                "tipo": "dia-util",
+                "funcionarios": [
+                    "Luiz",
+                    "Marina"
+                ]
+            },
+            {
+                "dia": 30,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Luiz Bispo",
+                    "Marina"
+                ]
+            }
+        ],
+        [
+            {
+                "dia": 31,
+                "tipo": "fim-de-semana",
+                "funcionarios": [
+                    "Nayara",
+                    "Samuel"
+                ]
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    ]
+}

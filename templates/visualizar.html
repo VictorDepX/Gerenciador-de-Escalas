@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Escala {{ mes }}/{{ ano }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Escala de {{ mes }}/{{ ano }}</h1>
+        <div class="calendar">
+            {% for dia in escala %}
+                <div class="day {{ dia.tipo }}" title="Funcionário: {{ dia.funcionario }}">
+                    <span class="dia">{{ dia.dia }}</span>
+                    <span class="nome">{{ dia.funcionario }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="botoes">
+            <a href="{{ url_for('exportar', mes=mes, ano=ano) }}">Exportar PDF</a>
+            <a href="{{ url_for('index') }}">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>
