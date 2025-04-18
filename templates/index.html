@@ -51,7 +51,7 @@
                     <tr>
                         {% for dia in semana %}
                         {% if dia %}
-                        <td class="{{ dia.get('tipo', '') }}"
+                        <td class="dia {{ dia.get('tipo', '') }}"
                             title="Funcionários: {{ dia.get('funcionarios', ['-']) | join(', ') }}">
                             <strong>{{ dia.get('dia', '') }}</strong><br>
                             {{ dia.get('funcionarios', ['-']) | join(', ') }}
@@ -71,7 +71,7 @@
 
         <aside>
             <h2>Escalas Disponíveis</h2>
-            <ul>
+            <ul class="menu">
                 {% for e in escalas %}
                 <li>
                     <a href="{{ url_for('index', ano=e['ano'], mes=e['mes']) }}">

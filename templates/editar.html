@@ -8,11 +8,7 @@
 </head>
 
 <body>
-    <header>
-        <h1>Edição da Escala - {{ mes }}/{{ ano }}</h1>
-        <a href="{{ url_for('index', ano=ano, mes=mes) }}">← Voltar</a>
-    </header>
-
+    <h1>Edição da Escala - {{ mes }}/{{ ano }}</h1>
     <main>
         <section class="calendario">
             <h2>Escala Atual</h2>
@@ -30,21 +26,28 @@
                 </thead>
                 <tbody>
                     {% for semana in escala['calendario'] %}
-                    <tr>
+                      <tr>
                         {% for dia in semana %}
-                        {% if dia %}
-                        <td class="{{ dia['tipo'] }}">
-                            <strong>{{ dia['dia'] }}</strong><br>
-                            {{ dia['funcionarios'][0] }}<br>
-                            {{ dia['funcionarios'][1] }}
+                          {% if dia %}
+                            <td class="
+                              {% if dia.tipo == 'domingo' %}
+                                domingo
+                              {% elif dia.tipo == 'fim-de-semana' %}
+                                sabado
+                              {% else %}
+                                dia-util
+                              {% endif %}
+                            " title="Funcionários: {{ dia['funcionarios'] | join(', ') }}">
+                            <strong>{{ dia.get('dia', '') }}</strong><br>
+                            {{ dia.get('funcionarios', ['-']) | join(', ') }}
                         </td>
-                        {% else %}
-                        <td></td>
-                        {% endif %}
+                          {% else %}
+                            <td class="vazio"></td>
+                          {% endif %}
                         {% endfor %}
-                    </tr>
+                      </tr>
                     {% endfor %}
-                </tbody>
+                  </tbody>
             </table>
         </section>
 
@@ -78,6 +81,7 @@
                 <button type="submit">Salvar Alteração</button>
             </form>
         </section>
+        <a href="{{ url_for('index', ano=ano, mes=mes) }}">← Voltar</a>
     </main>
 
     <footer>

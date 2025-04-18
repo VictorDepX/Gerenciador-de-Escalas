@@ -50,6 +50,7 @@ def index():
 @app.route("/gerar", methods=["GET", "POST"])
 def gerar():
     if request.method == "POST":
+        # Extrair ano e mês do campo 'mes_ano'
         mes_ano = request.form.get("mes_ano")  # Formato: '2025-04'
         ano, mes = map(int, mes_ano.split("-"))
 
@@ -73,13 +74,20 @@ def gerar():
 
         for dia in range(1, ultimo_dia + 1):
             tipo = "fim-de-semana" if data_atual.weekday() >= 5 else "dia-util"
-            escolhidos = random.sample(funcionarios, 2)
-
-            semana.append({
-                "dia": dia,
-                "tipo": tipo,
-                "funcionarios": escolhidos
-            })
+            # Lógica para não escalar ninguém aos domingos
+            if data_atual.weekday() == 6:
+                semana.append({
+                    "dia": dia,
+                    "tipo": "domingo",
+                    "funcionarios": []
+                })
+            else:
+                escolhidos = random.sample(funcionarios, 2)
+                semana.append({
+                    "dia": dia,
+                    "tipo": tipo,
+                    "funcionarios": escolhidos
+                })
 
             if len(semana) == 7:
                 calendario.append(semana)
@@ -102,6 +110,7 @@ def gerar():
         return redirect(url_for("index", ano=ano, mes=mes))
 
     return render_template("gerar.html")
+
 
 @app.route("/editar/<int:ano>/<int:mes>", methods=["GET", "POST"])
 def editar(ano, mes):
