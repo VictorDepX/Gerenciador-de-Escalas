@@ -45,7 +45,7 @@ def salvar_escala(mes, ano, dados):
 def carregar_escala(ano, mes):
     caminho = os.path.join(CAMINHO_ESCALAS, f"escala_{ano}_{mes}.json")
     if not os.path.exists(caminho):
-        return None
+        return "Não foi possível encontrar a escala."
     with open(caminho, "r", encoding="utf-8") as f:
         escala = json.load(f)
     escala.setdefault("ano", ano)

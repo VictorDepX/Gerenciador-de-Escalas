@@ -1,35 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <title>Editar Escala</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Editar Escala</h1>
-        <form method="post">
-            <input type="month" name="mes_ano" id="mes_ano" required>
-            <input type="hidden" name="mes" id="inputMes">
-            <input type="hidden" name="ano" id="inputAno">
+    <header>
+        <h1>Edição da Escala - {{ mes }}/{{ ano }}</h1>
+        <a href="{{ url_for('index', ano=ano, mes=mes) }}">← Voltar</a>
+    </header>
 
-            <label for="dia">Dia do mês:</label>
-            <input type="number" name="dia" id="dia" min="1" max="31" required>
+    <main>
+        <section class="calendario">
+            <h2>Escala Atual</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Seg</th>
+                        <th>Ter</th>
+                        <th>Qua</th>
+                        <th>Qui</th>
+                        <th>Sex</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for semana in escala['calendario'] %}
+                    <tr>
+                        {% for dia in semana %}
+                        {% if dia %}
+                        <td class="{{ dia['tipo'] }}">
+                            <strong>{{ dia['dia'] }}</strong><br>
+                            {{ dia['funcionarios'][0] }}<br>
+                            {{ dia['funcionarios'][1] }}
+                        </td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
 
-            <label for="funcionario">Funcionário:</label>
-            <select name="funcionario" required>
-                <option disabled selected>Selecione</option>
-                <option>Luiz Bispo</option>
-                <option>Luiz</option>
-                <option>Samuel</option>
-                <option>Nayara</option>
-                <option>Marina</option>
-            </select>
+        <section class="editar-form">
+            <h2>Editar Funcionário do Dia</h2>
+            <form method="POST">
+                <label for="dia">Dia:</label>
+                <select name="dia" id="dia" required>
+                    {% for semana in escala['calendario'] %}
+                        {% for dia in semana %}
+                            {% if dia %}
+                                <option value="{{ dia['dia'] }}">{{ dia['dia'] }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
 
-            <button type="submit">Salvar Alteração</button>
-        </form>
-        <a href="{{ url_for('index') }}">Voltar</a>
-    </div>
+                <label for="alvo">Funcionário a Substituir:</label>
+                <select name="alvo" id="alvo" required>
+                    <option value="0">Funcionário 1</option>
+                    <option value="1">Funcionário 2</option>
+                </select>
+
+                <label for="funcionario">Novo Funcionário:</label>
+                <select name="funcionario" id="funcionario" required>
+                    {% for nome in funcionarios %}
+                        <option value="{{ nome }}">{{ nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Salvar Alteração</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Sistema de Gerenciamento de Escalas</p>
+    </footer>
 </body>
+
 </html>

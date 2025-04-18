@@ -103,16 +103,30 @@ def gerar():
 
     return render_template("gerar.html")
 
-@app.route("/editar/<int:mes>/<int:ano>", methods=["GET", "POST"])
-def editar(mes, ano):
-    escala = carregar_escala(mes, ano)
+@app.route("/editar/<int:ano>/<int:mes>", methods=["GET", "POST"])
+def editar(ano, mes):
+    escala = carregar_escala(ano, mes)
+    if not escala:
+        return "Escala não encontrada."
+
+    funcionarios = carregar_funcionarios()
+
     if request.method == "POST":
-        dia = request.form["dia"]
-        funcionario = request.form["funcionario"]
-        escala[dia] = funcionario
+        dia = int(request.form["dia"])
+        alvo = int(request.form["alvo"])  # 0 ou 1
+        novo_func = request.form["funcionario"]
+
+        for semana in escala['calendario']:
+            for dia_semana in semana:
+                if dia_semana and dia_semana["dia"] == dia:
+                    escala_funcionarios = dia_semana["funcionarios"]
+                    escala_funcionarios[alvo] = novo_func
+                    break
+
         salvar_escala(mes, ano, escala)
-        return redirect(url_for("index"))
-    return render_template("editar.html", escala=escala, mes=mes, ano=ano)
+        return redirect(url_for("editar", ano=ano, mes=mes))
+
+    return render_template("editar.html", escala=escala, ano=ano, mes=mes, funcionarios=funcionarios)
 
 @app.route("/exportar/<int:mes>/<int:ano>")
 def exportar(ano, mes):
